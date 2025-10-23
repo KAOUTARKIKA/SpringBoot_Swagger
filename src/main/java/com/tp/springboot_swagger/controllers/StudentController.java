@@ -18,12 +18,14 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    @Operation(summary = "Ajouter un étudiant")
     @PostMapping("/save")
     public ResponseEntity<Student> save(@RequestBody Student student) {
         Student savedStudent = studentService.save(student);
         return new ResponseEntity<>(savedStudent, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "supprimer un étudiant")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") int id) {
         boolean deleted = studentService.delete(id);
@@ -33,6 +35,7 @@ public class StudentController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
     @Operation(summary = "Récupérer tous les étudiants")
     @GetMapping("/all")
     public ResponseEntity<List<Student>> findAll() {
@@ -40,12 +43,14 @@ public class StudentController {
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
 
+    @Operation(summary = "calculer le nombre des étudiants")
     @GetMapping("/count")
     public ResponseEntity<Long> countStudent() {
         long count = studentService.countStudents();
         return new ResponseEntity<>(count, HttpStatus.OK);
     }
 
+    @Operation(summary = "Retrieve the number of students grouped by academic year")
     @GetMapping("/byYear")
     public ResponseEntity<Collection<?>> findByYear() {
         Collection<?> studentsByYear = studentService.findNbrStudentByYear();

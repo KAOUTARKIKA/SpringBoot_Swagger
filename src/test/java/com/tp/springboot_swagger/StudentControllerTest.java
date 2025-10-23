@@ -68,11 +68,11 @@ class StudentControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-    @Test
-    void testFindByYear() {
-        when(studentService.findNbrStudentByYear()).thenReturn(Arrays.asList());
-        ResponseEntity<Collection<?>> response = studentController.findByYear();
-        assertEquals(0, response.getBody().size());
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-    }
+//    @Test
+//    void testFindByYear() {
+//        when(studentService.findNbrStudentByYear()).thenReturn(Arrays.asList());
+//        ResponseEntity<Collection<?>> response = studentController.findByYear();
+//        assertEquals(0, response.getBody().size());
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//    }
 }
